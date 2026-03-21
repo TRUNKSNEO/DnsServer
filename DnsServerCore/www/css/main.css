@@ -10,7 +10,36 @@
 body {
     margin: 0px !important;
     line-height: 1.42857143 !important;
+}
+
+@media (prefers-color-scheme: light) {
+    body {
+        background-color: #fafafa;
+    }
+
+    #header {
+        background-color: #6699ff;
+        box-shadow: 0px 1px 15px 0px #888888;
+    }
+
+    #footer {
+        background-color: #f3f3f3;
+        box-shadow: 0px 2px 15px 1px #888888;
+    }
+}
+
+body.light-mode {
     background-color: #fafafa;
+}
+
+.light-mode #header {
+    background-color: #6699ff;
+    box-shadow: 0px 1px 15px 0px #888888;
+}
+
+.light-mode #footer {
+    background-color: #f3f3f3;
+    box-shadow: 0px 2px 15px 1px #888888;
 }
 
 a {
@@ -35,10 +64,8 @@ th a {
     }
 
 #header {
-    background-color: #6699ff;
     height: 32px;
     margin-bottom: -32px;
-    box-shadow: 0px 1px 15px 0px #888888;
     width: 100%;
     min-width: 970px;
 }
@@ -116,10 +143,8 @@ th a {
     }
 
 #footer {
-    background-color: rgb(243, 243, 243);
     padding: 20px 0px 20px 0px;
     margin-top: -55px;
-    box-shadow: 0px 2px 15px 1px #888888;
     clear: both;
     position: relative;
     height: 55px;
@@ -369,6 +394,22 @@ th a {
         border: 3px solid #2c2c2e;
     }
 
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1a1a1a;
+    }
+
+    #header {
+        background-color: #2c2c2e;
+        box-shadow: 0px 1px 15px 0px #000;
+    }
+
+    #footer {
+        background-color: #252525;
+        box-shadow: 0px 2px 15px 1px #000;
+    }
+}
+
 body.dark-mode {
     background-color: #1a1a1a !important;
     color: #dcdcdc !important;
@@ -387,8 +428,8 @@ body.dark-mode {
 
 .dark-mode #footer {
     background-color: #252525 !important;
-    color: #888888 !important;
     box-shadow: 0px 2px 15px 1px #000 !important;
+    color: #888888 !important;
 }
 
     .dark-mode #footer .content {
