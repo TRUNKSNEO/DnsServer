@@ -335,7 +335,12 @@ namespace DnsServerCore
                 jsonWriter.WriteBoolean("ssoEnabled", _dnsWebService._authManager.SsoEnabled);
                 jsonWriter.WriteString("ssoAuthority", _dnsWebService._authManager.SsoAuthority?.OriginalString);
                 jsonWriter.WriteString("ssoClientId", _dnsWebService._authManager.SsoClientId);
-                jsonWriter.WriteString("ssoClientSecret", "************");
+
+                if (string.IsNullOrEmpty(_dnsWebService._authManager.SsoClientSecret))
+                    jsonWriter.WriteString("ssoClientSecret", null as string);
+                else
+                    jsonWriter.WriteString("ssoClientSecret", "************");
+
                 jsonWriter.WriteString("ssoMetadataAddress", _dnsWebService._authManager.SsoMetadataAddress?.OriginalString);
                 jsonWriter.WriteBoolean("ssoAllowSignup", _dnsWebService._authManager.SsoAllowSignup);
                 jsonWriter.WriteBoolean("ssoAllowSignupOnlyForMappedUsers", _dnsWebService._authManager.SsoAllowSignupOnlyForMappedUsers);
