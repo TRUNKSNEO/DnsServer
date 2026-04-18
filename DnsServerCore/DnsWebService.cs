@@ -2599,7 +2599,7 @@ namespace DnsServerCore
             if (!QuicConnection.IsSupported)
             {
                 if (!Socket.OSSupportsIPv6)
-                    throw new DnsWebServiceException(protocolName + " requires IPv6 enabled on the system to work.");
+                    throw new DnsWebServiceException(protocolName + " requires IPv6 support on the system to work.");
 
                 throw new DnsWebServiceException(protocolName + " is supported only on Windows 11 (build 22000 and later), Windows Server 2022 (and later), and Linux. On Linux, you must install 'libmsquic' manually.");
             }
