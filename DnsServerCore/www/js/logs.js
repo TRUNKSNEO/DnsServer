@@ -18,27 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 $(function () {
-    $("#optQueryLogsAppName").on("change", function () {
-        if (appsList == null)
-            return;
-
-        var appName = $("#optQueryLogsAppName").val();
-        var optClassPaths = "";
-
-        for (var i = 0; i < appsList.length; i++) {
-            if (appsList[i].name == appName) {
-                for (var j = 0; j < appsList[i].dnsApps.length; j++) {
-                    if (appsList[i].dnsApps[j].isQueryLogs)
-                        optClassPaths += "<option>" + appsList[i].dnsApps[j].classPath + "</option>";
-                }
-
-                break;
-            }
-        }
-
-        $("#optQueryLogsClassPath").html(optClassPaths);
-        $("#txtAddEditRecordDataData").val("");
-    });
+    $("#optQueryLogsAppName").on("change", reloadClassPath);
 
     $("#optQueryLogsEntriesPerPage").on("change", function () {
         localStorage.setItem("optQueryLogsEntriesPerPage", $("#optQueryLogsEntriesPerPage").val());
@@ -70,6 +50,10 @@ $(function () {
 });
 
 function resetQueryLogsForm() {
+    $("#frmQueryLogs").trigger("reset");
+
+    reloadClassPath();
+
     $("#txtQueryLogPageNumber").prop("disabled", false);
     $("#optQueryLogsDescendingOrder").prop("disabled", false);
     $("#txtQueryLogStart").prop("disabled", false);
@@ -79,6 +63,27 @@ function resetQueryLogsForm() {
     var optQueryLogsEntriesPerPage = localStorage.getItem("optQueryLogsEntriesPerPage");
     if (optQueryLogsEntriesPerPage != null)
         $("#optQueryLogsEntriesPerPage").val(optQueryLogsEntriesPerPage);
+}
+
+function reloadClassPath() {
+    if (appsList == null)
+        return;
+
+    var appName = $("#optQueryLogsAppName").val();
+    var optClassPaths = "";
+
+    for (var i = 0; i < appsList.length; i++) {
+        if (appsList[i].name == appName) {
+            for (var j = 0; j < appsList[i].dnsApps.length; j++) {
+                if (appsList[i].dnsApps[j].isQueryLogs)
+                    optClassPaths += "<option>" + appsList[i].dnsApps[j].classPath + "</option>";
+            }
+
+            break;
+        }
+    }
+
+    $("#optQueryLogsClassPath").html(optClassPaths);
 }
 
 function refreshLogsTab() {
