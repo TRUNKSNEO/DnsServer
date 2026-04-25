@@ -1869,9 +1869,10 @@ namespace DnsServerCore
             _webService.MapGetAndPost("/api/user/checkForUpdate", _api.CheckForUpdateAsync);
 
             //dashboard
-            _webService.MapGetAndPost("/api/dashboard/stats/metrics", _dashboardApi.GetMetrics);
-            _webService.MapGetAndPost("/api/dashboard/stats/get", _dashboardApi.GetStats);
-            _webService.MapGetAndPost("/api/dashboard/stats/getTop", _dashboardApi.GetTopStats);
+            _webService.MapGetAndPost("/api/dashboard/metrics/json", _dashboardApi.GetMetricsJson);
+            _webService.MapGetAndPost("/api/dashboard/metrics/text", _dashboardApi.GetMetricsText);
+            _webService.MapGetAndPost("/api/dashboard/stats/get", _dashboardApi.GetStatsAsync);
+            _webService.MapGetAndPost("/api/dashboard/stats/getTop", _dashboardApi.GetTopStatsAsync);
             _webService.MapGetAndPost("/api/dashboard/stats/deleteAll", _logsApi.DeleteAllStats);
 
             //zones
@@ -2161,6 +2162,7 @@ namespace DnsServerCore
                     }
                     break;
 
+                case "/api/dashboard/metrics/text":
                 case "/api/zones/export":
                 case "/api/allowed/export":
                 case "/api/blocked/export":
