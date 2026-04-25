@@ -33,7 +33,7 @@ using TechnitiumLibrary;
 using TechnitiumLibrary.Net.Dns;
 using TechnitiumLibrary.Net.Dns.ResourceRecords;
 
-namespace QueryLogsPostgres
+namespace QueryLogsPostgreSql
 {
     public sealed class App : IDnsApplication, IDnsQueryLogger, IDnsQueryLogs
     {
